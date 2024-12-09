@@ -1,0 +1,25 @@
+{
+  "name": "@ronaldocreis/wishlist-schema",
+  "version": "1.0.1",
+  "description": "share zod schema between backend and frontend of the wishlist app",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": "https://github.com/RonaldoCReis/wishlist-schema",
+  "author": "Ronaldo Reis <ronaldocreis7@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
+  }
+}
