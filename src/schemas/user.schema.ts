@@ -27,7 +27,13 @@ export const User = NewUser.extend({
 export type User = z.infer<typeof User>;
 
 export const Users = z.array(
-  User.omit({ createdAt: true, updatedAt: true, bio: true, email: true })
+  User.omit({
+    createdAt: true,
+    updatedAt: true,
+    bio: true,
+    email: true,
+    lists: true,
+  })
 );
 
 export type Users = z.infer<typeof Users>;
