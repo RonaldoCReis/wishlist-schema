@@ -1,5 +1,4 @@
 import z from 'zod';
-import { List } from './list.schema';
 
 export const NewProduct = z.object({
   url: z.string(),
@@ -7,7 +6,7 @@ export const NewProduct = z.object({
   price: z.number().nullish(),
   imageUrl: z.string().nullish(),
   store: z.string().nullish(),
-  listId: List.shape.id,
+  listId: z.string(),
 });
 
 export type NewProduct = z.infer<typeof NewProduct>;
@@ -20,7 +19,9 @@ export const Product = NewProduct.extend({
 
 export type Product = z.infer<typeof Product>;
 
-export const Products = z.array(Product);
+export const Products = z.array(
+  Product.omit({ createdAt: true, updatedAt: true, listId: true })
+);
 
 export type Products = z.infer<typeof Products>;
 
