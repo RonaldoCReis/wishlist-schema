@@ -25,7 +25,7 @@ export const Lists = z.array(
     userId: true,
   }).extend({
     productCount: z.number(),
-    productImages: z.array(z.string()),
+    productImages: z.array(z.string().nullish()),
   })
 );
 
