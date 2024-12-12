@@ -2,7 +2,7 @@ import z from 'zod';
 import { Products } from './product.schema';
 
 export const NewList = z.object({
-  name: z.string(),
+  name: z.string().min(1),
   visibility: z.enum(['public', 'private']),
 });
 
