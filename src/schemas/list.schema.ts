@@ -2,7 +2,6 @@ import z from 'zod';
 import { Products } from './product.schema';
 
 export const NewList = z.object({
-  userId: z.string(),
   name: z.string(),
   visibility: z.enum(['public', 'private']),
 });
@@ -23,7 +22,6 @@ export const Lists = z.array(
     createdAt: true,
     updatedAt: true,
     products: true,
-    userId: true,
   }).extend({
     productCount: z.number(),
     productImages: z.array(z.string().nullish()),
@@ -32,6 +30,6 @@ export const Lists = z.array(
 
 export type Lists = z.infer<typeof Lists>;
 
-export const UpdateList = NewList.omit({ userId: true });
+export const UpdateList = NewList;
 
 export type UpdateList = z.infer<typeof UpdateList>;
