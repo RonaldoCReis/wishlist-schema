@@ -4,6 +4,7 @@ import { Products } from './product.schema';
 export const NewList = z.object({
   userId: z.string(),
   name: z.string(),
+  visibility: z.enum(['public', 'private']),
 });
 
 export type NewList = z.infer<typeof NewList>;
