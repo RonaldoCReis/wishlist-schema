@@ -1,63 +1,64 @@
 import { z } from 'zod';
 const Image = z
   .object({
-    height: z.string().nullish(),
-    url: z.string().nullish(),
-    width: z.string().nullish(),
-    type: z.string().nullish(),
+    height: z.string().optional(),
+    url: z.string().optional(),
+    width: z.string().optional(),
+    type: z.string().optional(),
   })
-  .nullish();
+  .optional();
 
 const Offer = z
   .object({
-    '@type': z.string().nullish(),
-    sku: z.string().nullish(),
-    availability: z.string().nullish(),
-    price: z.number().nullish(),
-    priceCurrency: z.string().nullish(),
-    url: z.string().nullish(),
+    '@type': z.string().optional(),
+    sku: z.string().optional(),
+    availability: z.string().optional(),
+    price: z.number().optional(),
+    priceCurrency: z.string().optional(),
+    url: z.string().optional(),
   })
-  .nullish();
+  .optional();
 
 export const OpenGraph = z.object({
   success: z.boolean(),
-  ogSiteName: z.string().nullish(),
-  ogUrl: z.string().nullish(),
-  ogTitle: z.string().nullish(),
-  ogType: z.string().nullish(),
-  ogDescription: z.string().nullish(),
-  ogPriceAmount: z.string().nullish(),
-  ogPriceCurrency: z.string().nullish(),
-  twitterCard: z.string().nullish(),
-  twitterTitle: z.string().nullish(),
-  twitterDescription: z.string().nullish(),
-  ogImage: z.array(Image).nullish().or(Image),
-  ogLocale: z.string().nullish(),
-  favicon: z.string().nullish(),
-  charset: z.string().nullish(),
+  ogSiteName: z.string().optional(),
+  ogUrl: z.string().optional(),
+  ogTitle: z.string().optional(),
+  ogType: z.string().optional(),
+  ogDescription: z.string().optional(),
+  ogPriceAmount: z.string().optional(),
+  ogPriceCurrency: z.string().optional(),
+  twitterCard: z.string().optional(),
+  twitterTitle: z.string().optional(),
+  twitterSite: z.string().optional(),
+  twitterDescription: z.string().optional(),
+  ogImage: z.array(Image).optional().or(Image),
+  ogLocale: z.string().optional(),
+  favicon: z.string().optional(),
+  charset: z.string().optional(),
   jsonLD: z
     .array(
       z
         .object({
-          '@context': z.string().nullish(),
-          '@type': z.string().nullish(),
-          name: z.string().nullish(),
-          url: z.string().nullish(),
-          image: z.array(z.string().nullish()).or(z.string().nullish()),
-          description: z.string().nullish(),
-          sku: z.string().nullish(),
+          '@context': z.string().optional(),
+          '@type': z.string().optional(),
+          name: z.string().optional(),
+          url: z.string().optional(),
+          image: z.array(z.string().optional()).or(z.string().optional()),
+          description: z.string().optional(),
+          sku: z.string().optional(),
           brand: z
             .object({
-              '@type': z.string().nullish(),
-              name: z.string().nullish(),
+              '@type': z.string().optional(),
+              name: z.string().optional(),
             })
-            .nullish(),
-          offers: z.array(Offer).nullish().or(Offer),
+            .optional(),
+          offers: z.array(Offer).optional().or(Offer),
         })
-        .nullish()
+        .optional()
     )
-    .nullish(),
-  requestUrl: z.string().nullish(),
+    .optional(),
+  requestUrl: z.string().optional(),
 });
 
 export type OpenGraph = z.infer<typeof OpenGraph>;
