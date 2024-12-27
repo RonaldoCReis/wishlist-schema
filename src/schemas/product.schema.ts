@@ -3,11 +3,12 @@ import z from 'zod';
 export const NewProduct = z.object({
   url: z.string(),
   name: z.string(),
+  listId: z.string(),
   price: z.number().nullish(),
   imageUrl: z.string().nullish(),
   store: z.string().nullish(),
-  listId: z.string(),
   priority: z.enum(['low', 'medium', 'high']).nullish(),
+  description: z.string().nullish(),
 });
 
 export type NewProduct = z.infer<typeof NewProduct>;
