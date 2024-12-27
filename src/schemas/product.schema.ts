@@ -4,11 +4,11 @@ export const NewProduct = z.object({
   url: z.string(),
   name: z.string(),
   listId: z.string(),
-  price: z.number().nullish(),
-  imageUrl: z.string().nullish(),
-  store: z.string().nullish(),
-  priority: z.enum(['low', 'medium', 'high']).nullish(),
-  description: z.string().nullish(),
+  price: z.number().optional(),
+  imageUrl: z.string().optional(),
+  store: z.string().optional(),
+  priority: z.enum(['low', 'medium', 'high']).optional(),
+  description: z.string().optional(),
 });
 
 export type NewProduct = z.infer<typeof NewProduct>;
