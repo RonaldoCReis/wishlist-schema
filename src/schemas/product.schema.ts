@@ -26,6 +26,6 @@ export const Products = z.array(
 
 export type Products = z.infer<typeof Products>;
 
-export const UpdateProduct = NewProduct.omit({ listId: true });
+export const UpdateProduct = NewProduct;
 
 export type UpdateProduct = z.infer<typeof UpdateProduct>;
