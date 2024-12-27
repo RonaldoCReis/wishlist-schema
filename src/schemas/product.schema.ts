@@ -7,6 +7,7 @@ export const NewProduct = z.object({
   imageUrl: z.string().nullish(),
   store: z.string().nullish(),
   listId: z.string(),
+  priority: z.enum(['low', 'medium', 'high']).default('medium'),
 });
 
 export type NewProduct = z.infer<typeof NewProduct>;
