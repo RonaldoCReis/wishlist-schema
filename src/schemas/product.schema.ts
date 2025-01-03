@@ -5,10 +5,10 @@ export const NewProduct = z.object({
   name: z.string().min(1),
   listId: z.string().cuid(),
   price: z.number().nullish(),
-  imageUrl: z.string().optional(),
-  store: z.string().optional(),
-  priority: z.enum(['low', 'medium', 'high']).optional(),
-  description: z.string().optional(),
+  imageUrl: z.string().nullish(),
+  store: z.string().nullish(),
+  priority: z.enum(['low', 'medium', 'high']).nullish(),
+  description: z.string().nullish(),
 });
 
 export type NewProduct = z.infer<typeof NewProduct>;
