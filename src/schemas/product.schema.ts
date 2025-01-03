@@ -4,7 +4,7 @@ export const NewProduct = z.object({
   url: z.string().url(),
   name: z.string().min(1),
   listId: z.string().cuid(),
-  price: z.number().optional(),
+  price: z.number().nullish(),
   imageUrl: z.string().optional(),
   store: z.string().optional(),
   priority: z.enum(['low', 'medium', 'high']).optional(),
