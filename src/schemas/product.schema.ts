@@ -1,9 +1,9 @@
 import z from 'zod';
 
 export const NewProduct = z.object({
-  url: z.string(),
-  name: z.string(),
-  listId: z.string(),
+  url: z.string().url(),
+  name: z.string().min(1),
+  listId: z.string().cuid(),
   price: z.number().optional(),
   imageUrl: z.string().optional(),
   store: z.string().optional(),
@@ -14,7 +14,7 @@ export const NewProduct = z.object({
 export type NewProduct = z.infer<typeof NewProduct>;
 
 export const Product = NewProduct.extend({
-  id: z.string(),
+  id: z.string().cuid(),
   createdAt: z.date(),
   updatedAt: z.date(),
 });

@@ -9,7 +9,7 @@ export const NewList = z.object({
 export type NewList = z.infer<typeof NewList>;
 
 export const List = NewList.extend({
-  id: z.string(),
+  id: z.string().cuid(),
   products: Products,
   createdAt: z.date(),
   updatedAt: z.date(),
