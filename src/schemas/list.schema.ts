@@ -1,24 +1,20 @@
 import z from 'zod';
-import { Products } from './product.schema';
+import { ProductsSchema } from './product.schema';
 
-export const NewList = z.object({
+export const NewListSchema = z.object({
   name: z.string().min(1),
   visibility: z.enum(['public', 'private']),
 });
 
-export type NewList = z.infer<typeof NewList>;
-
-export const List = NewList.extend({
+export const ListSchema = NewListSchema.extend({
   id: z.string().cuid(),
-  products: Products,
+  products: ProductsSchema,
   createdAt: z.date(),
   updatedAt: z.date(),
 });
 
-export type List = z.infer<typeof List>;
-
-export const Lists = z.array(
-  List.omit({
+export const ListsSchema = z.array(
+  ListSchema.omit({
     createdAt: true,
     updatedAt: true,
     products: true,
@@ -28,8 +24,9 @@ export const Lists = z.array(
   })
 );
 
-export type Lists = z.infer<typeof Lists>;
+export const UpdateListSchema = NewListSchema;
 
-export const UpdateList = NewList;
-
-export type UpdateList = z.infer<typeof UpdateList>;
+export type NewList = z.infer<typeof NewListSchema>;
+export type List = z.infer<typeof ListSchema>;
+export type Lists = z.infer<typeof ListsSchema>;
+export type UpdateList = z.infer<typeof UpdateListSchema>;

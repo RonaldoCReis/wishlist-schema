@@ -1,7 +1,7 @@
 import z from 'zod';
-import { Lists } from './list.schema';
+import { ListsSchema } from './list.schema';
 
-export const UpdateUser = z.object({
+export const UpdateUserSchema = z.object({
   email: z.string().email(),
   username: z.string(),
   firstName: z.string().nullish(),
@@ -10,24 +10,18 @@ export const UpdateUser = z.object({
   bio: z.string().nullish(),
 });
 
-export type UpdateUser = z.infer<typeof UpdateUser>;
-
-export const NewUser = UpdateUser.extend({
+export const NewUserSchema = UpdateUserSchema.extend({
   id: z.string(),
 });
 
-export type NewUser = z.infer<typeof NewUser>;
-
-export const User = NewUser.extend({
-  lists: Lists,
+export const UserSchema = NewUserSchema.extend({
+  lists: ListsSchema,
   createdAt: z.date(),
   updatedAt: z.date(),
 });
 
-export type User = z.infer<typeof User>;
-
-export const Users = z.array(
-  User.omit({
+export const UsersSchema = z.array(
+  UserSchema.omit({
     createdAt: true,
     updatedAt: true,
     bio: true,
@@ -36,4 +30,7 @@ export const Users = z.array(
   })
 );
 
-export type Users = z.infer<typeof Users>;
+export type UpdateUser = z.infer<typeof UpdateUserSchema>;
+export type NewUser = z.infer<typeof NewUserSchema>;
+export type User = z.infer<typeof UserSchema>;
+export type Users = z.infer<typeof UsersSchema>;

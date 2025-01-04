@@ -1,6 +1,6 @@
 import z from 'zod';
 
-export const NewProduct = z.object({
+export const NewProductSchema = z.object({
   url: z.string().url(),
   name: z.string().min(1),
   listId: z.string().cuid(),
@@ -11,22 +11,19 @@ export const NewProduct = z.object({
   description: z.string().nullish(),
 });
 
-export type NewProduct = z.infer<typeof NewProduct>;
-
-export const Product = NewProduct.extend({
+export const ProductSchema = NewProductSchema.extend({
   id: z.string().cuid(),
   createdAt: z.date(),
   updatedAt: z.date(),
 });
 
-export type Product = z.infer<typeof Product>;
-
-export const Products = z.array(
-  Product.omit({ createdAt: true, updatedAt: true, listId: true })
+export const ProductsSchema = z.array(
+  ProductSchema.omit({ createdAt: true, updatedAt: true, listId: true })
 );
 
-export type Products = z.infer<typeof Products>;
+export const UpdateProductSchema = NewProductSchema;
 
-export const UpdateProduct = NewProduct;
-
-export type UpdateProduct = z.infer<typeof UpdateProduct>;
+export type NewProduct = z.infer<typeof NewProductSchema>;
+export type Product = z.infer<typeof ProductSchema>;
+export type Products = z.infer<typeof ProductsSchema>;
+export type UpdateProduct = z.infer<typeof UpdateProductSchema>;
