@@ -30,7 +30,13 @@ export const UsersSchema = z.array(
   })
 );
 
+export const UsersQuerySchema = z.object({
+  search: z.string().optional(),
+});
+
 export type UpdateUser = z.infer<typeof UpdateUserSchema>;
 export type NewUser = z.infer<typeof NewUserSchema>;
 export type User = z.infer<typeof UserSchema>;
 export type Users = z.infer<typeof UsersSchema>;
+
+export type UsersQuery = z.infer<typeof UsersQuerySchema>;
