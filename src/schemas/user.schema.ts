@@ -2,7 +2,6 @@ import z from 'zod';
 import { ListsSchema } from './list.schema';
 
 export const UpdateUserSchema = z.object({
-  username: z.string(),
   name: z.string().nullish(),
   profileImageUrl: z.string().nullish(),
   bio: z.string().nullish(),
@@ -11,6 +10,7 @@ export const UpdateUserSchema = z.object({
 export const NewUserSchema = UpdateUserSchema.extend({
   id: z.string(),
   email: z.string().email(),
+  username: z.string(),
 });
 
 export const UserSchema = NewUserSchema.extend({
