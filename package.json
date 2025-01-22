@@ -1,6 +1,6 @@
 {
   "name": "@ronaldocreis/wishlist-schema",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "share zod schema between backend and frontend of the wishlist app",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
