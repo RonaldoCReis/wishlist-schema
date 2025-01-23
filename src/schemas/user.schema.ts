@@ -25,7 +25,7 @@ export const UpdateUserImageSchema = z.object({
 
 export const UpdateUserSchema = z.object({
   name: z.string().nullish(),
-  bio: z.string().nullish(),
+  bio: z.string().max(150).nullish(),
 });
 
 export const NewUserSchema = UpdateUserSchema.extend({
